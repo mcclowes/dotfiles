@@ -1,1 +1,1 @@
-# dotfiles
+# dotfiles - is a great project
