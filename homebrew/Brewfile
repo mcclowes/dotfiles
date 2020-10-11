@@ -11,6 +11,7 @@ brew "node"
 brew "nvm"
 brew "python"
 brew "q"
+brew "r"
 
 cask "1password"
 cask "alfred"
