@@ -2,6 +2,12 @@
 
 # Install command-line tools using Homebrew.
 
+# Install home-brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Tap
+brew tap homebrew/cask
+
 # Make sure we’re using the latest Homebrew.
 brew update
 
@@ -12,7 +18,7 @@ brew upgrade
 BREW_PREFIX=$(brew --prefix)
 
 
-info '> brew utils'
+#info '> brew utils'
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
@@ -34,10 +40,10 @@ if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
   chsh -s "${BREW_PREFIX}/bin/bash";
 fi;
 
-info '> brew bundle'
+#info '> brew bundle'
 brew bundle --file="./Brewfile" | indent
 
-info '> brew cleanup'
+#info '> brew cleanup'
 brew cleanup | indent
 
 success '> brew'
