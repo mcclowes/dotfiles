@@ -17,8 +17,6 @@ brew upgrade
 # Save Homebrew’s installed location.
 BREW_PREFIX=$(brew --prefix)
 
-
-#info '> brew utils'
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
@@ -40,10 +38,10 @@ if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
   chsh -s "${BREW_PREFIX}/bin/bash";
 fi;
 
-#info '> brew bundle'
+# Install from brew file
 brew bundle --file="./Brewfile" | indent
 
-#info '> brew cleanup'
+# Cleanup
 brew cleanup | indent
 
 success '> brew'
