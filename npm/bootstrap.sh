@@ -1,0 +1,1 @@
+npm install -g vercel gatsby next prettier npmwhy
