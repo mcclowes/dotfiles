@@ -50,6 +50,7 @@ cask "sublime-text"
 cask "the-unarchiver"
 cask "transmission"
 cask "unity"
+cask "visual-studio-code"
 cask "vlc"
 cask "windscribe"
 
