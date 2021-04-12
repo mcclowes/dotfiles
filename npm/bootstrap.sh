@@ -1,1 +1,1 @@
-npm install -g vercel gatsby next prettier npm-why
+npm install -g vercel gatsby next prettier npm-why git-open
