@@ -1,10 +1,26 @@
-Add these to ~/.gitconfig:
+# This is Git's per-user configuration file.
+[user]
+  name = Max Clayton Clowes
+  email = contact@mcclowes.com
 
 [core]
+  editor = /Applications/Sublime\\ Text.app/Contents/SharedSupport/bin/subl -n -w
   pager = delta
+
 [delta]
   plus-color = "#012800"
   minus-color = "#340001"
   syntax-theme = Monokai Extended
+  side-by-side = true
+
 [interactive]
   diffFilter = delta --color-only
+
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+
+[pull]
+  rebase = false
