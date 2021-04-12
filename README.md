@@ -13,8 +13,18 @@ xcode-select --install
 mkdir Development && cd Development && mkdir mcclowes && cd mcclowes && git clone https://github.com/mcclowes/dotfiles.git
 ```
 
+### 3. Run bootstrap
 
-## App Store
+`sh bootstrap.sh`
 
-Applications to download from Apple app store:
+### Other applications
+
+#### App store
 - Todoist
+- Sip
+
+#### Dropbox
+- Sunsama
+
+#### Web
+- Adobe CS

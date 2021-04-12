@@ -1,2 +1,6 @@
-sh ./homebrew/bootstrap.sh &&
-sh ./npm/bootstrap.sh &&
+cd ./homebrew&&
+sh ./bootstrap.sh &&
+cd ../npm &&
+sh ./bootstrap.sh
+cd ../zsh &&
+sh ./bootstrap.sh
