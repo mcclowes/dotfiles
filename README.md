@@ -21,16 +21,8 @@ mkdir Development && cd Development && mkdir mcclowes && cd mcclowes && git clon
 
 Where possible, applications are installed via brew casks.
 
-### Other applications
+### Manual application downloads
 
-#### App store
-- Todoist
-- Sip
-
-#### Dropbox
-- Sunsama
-
-#### Web
 - Adobe CS
 
 ## Apple
