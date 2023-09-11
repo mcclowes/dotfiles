@@ -30,6 +30,7 @@ Where possible, applications are installed via brew casks.
 ### Keyboard
 
 #### Modifier keys
+
 Switch cmd and alt (for external keyboard only)
 
 #### Shortcuts

@@ -5,6 +5,10 @@
 # Install home-brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# Update bash to use home-brew
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/maxclaytonclowes/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Tap
 brew tap homebrew/cask
 
@@ -24,10 +28,13 @@ ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 
 # Install some other useful utilities like `sponge`.
 brew install moreutils
+
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
+
 # Install GNU `sed`, overwriting the built-in `sed`.
 brew install gnu-sed --with-default-names
+
 # Install a modern version of Bash.
 brew install bash
 brew install bash-completion2
