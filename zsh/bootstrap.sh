@@ -1,4 +1,4 @@
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &&
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &&
 cd ~/Development &&
 mkdir mcclowes &&
 cd mcclowes && 
@@ -71,5 +71,7 @@ function npmfetch {
 }
 
 export PATH=\"$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH\"
+
+ZSH_DIR="$HOME/Development/mcclowes/oh-my-zsh"
 
 " >> ~/.zshrc
