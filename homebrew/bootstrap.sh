@@ -1,54 +1,88 @@
 #!/usr/bin/env bash
 
-# Install command-line tools using Homebrew.
+# Install command-line tools using Homebrew
 
-# Install home-brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+set -e
 
-# Update bash to use home-brew
-(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/maxclaytonclowes/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)"
+echo "Installing Homebrew and packages..."
 
-# Tap
-brew tap homebrew/cask
+# Check if Homebrew is already installed
+if ! command -v brew &> /dev/null; then
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Make sure we’re using the latest Homebrew.
+    # Add Homebrew to PATH for Apple Silicon and Intel Macs
+    if [[ -f "/opt/homebrew/bin/brew" ]]; then
+        # Apple Silicon
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+        (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> "${HOME}/.zprofile"
+    elif [[ -f "/usr/local/bin/brew" ]]; then
+        # Intel
+        eval "$(/usr/local/bin/brew shellenv)"
+    fi
+else
+    echo "Homebrew already installed"
+fi
+
+# Make sure we're using the latest Homebrew
+echo "Updating Homebrew..."
 brew update
 
-# Upgrade any already-installed formulae.
+# Upgrade any already-installed formulae
+echo "Upgrading existing packages..."
 brew upgrade
 
-# Save Homebrew’s installed location.
+# Save Homebrew's installed location
 BREW_PREFIX=$(brew --prefix)
 
-# Install GNU core utilities (those that come with macOS are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils
-ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
+# Install GNU core utilities (those that come with macOS are outdated)
+echo "Installing GNU utilities..."
+if ! brew list coreutils &> /dev/null; then
+    brew install coreutils
+fi
 
-# Install some other useful utilities like `sponge`.
-brew install moreutils
+if [[ ! -f "${BREW_PREFIX}/bin/sha256sum" ]]; then
+    ln -sf "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
+fi
 
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
+# Install some other useful utilities
+if ! brew list moreutils &> /dev/null; then
+    brew install moreutils
+fi
 
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
+# Install GNU `find`, `locate`, `updatedb`, and `xargs`
+if ! brew list findutils &> /dev/null; then
+    brew install findutils
+fi
 
-# Install a modern version of Bash.
-brew install bash
-brew install bash-completion2
+# Install GNU `sed`
+if ! brew list gnu-sed &> /dev/null; then
+    brew install gnu-sed
+fi
 
-# Switch to using brew-installed bash as default shell
-if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
-  echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
-  chsh -s "${BREW_PREFIX}/bin/bash";
-fi;
+# Install a modern version of Bash
+if ! brew list bash &> /dev/null; then
+    brew install bash
+fi
 
-# Install from brew file
-brew bundle --file="./Brewfile" | indent
+if ! brew list bash-completion@2 &> /dev/null; then
+    brew install bash-completion@2
+fi
+
+# Switch to using brew-installed bash as default shell (optional)
+if ! grep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
+    echo "Adding Homebrew bash to allowed shells..."
+    echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells
+    echo "You can now run: chsh -s ${BREW_PREFIX}/bin/bash (if you want to use Homebrew bash)"
+fi
+
+# Install from Brewfile
+echo "Installing packages from Brewfile..."
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+brew bundle --file="${SCRIPT_DIR}/Brewfile"
 
 # Cleanup
-brew cleanup | indent
+echo "Cleaning up..."
+brew cleanup
 
-success '> brew'
+echo "Homebrew setup complete!"
