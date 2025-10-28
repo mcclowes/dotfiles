@@ -1,0 +1,13 @@
+# Alfred Preferences - Exclude sensitive data
+
+# Clipboard history may contain sensitive data
+Alfred.alfredpreferences/clipboard/
+
+# Cache files
+Alfred.alfredpreferences/cache/
+
+# Recent items may contain sensitive search history
+Alfred.alfredpreferences/recentitems/
+
+# Optional: Uncomment to exclude specific workflow data
+# Alfred.alfredpreferences/workflows/user.workflow.*/
