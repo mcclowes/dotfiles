@@ -73,6 +73,7 @@ cask "r"
 cask "rstudio"
 
 # Window Management
+cask "rectangle"
 cask "spectacle"
 
 # Fonts
