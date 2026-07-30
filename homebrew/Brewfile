@@ -60,6 +60,9 @@ cask "vlc"
 cask "r"
 cask "rstudio"
 
+# Window Management
+cask "rectangle"
+
 # Fonts
 cask "font-lato"
 cask "font-merriweather"
