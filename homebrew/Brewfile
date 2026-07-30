@@ -1,8 +1,5 @@
 cask_args appdir: "/Applications"
 
-# Tap additional repositories
-tap "homebrew/cask-fonts"
-
 # Command Line Tools
 brew "circleci"
 brew "coreutils"
@@ -32,10 +29,8 @@ cask "alfred"
 cask "bartender"
 cask "bitbar"
 cask "breaktimer"
-cask "cheatsheet"
-cask "dropbox"
-cask "fellow"
 cask "grandperspective"
+cask "maccy"
 cask "notion"
 cask "the-unarchiver"
 cask "todoist"
@@ -45,16 +40,10 @@ cask "discord"
 cask "microsoft-teams"
 cask "slack"
 
-# Browsers
-cask "google-chrome"
-
 # Development
+cask "claude-code"
 cask "docker"
-cask "kitty"
 cask "postman"
-cask "stoplight-studio"
-cask "sublime-merge"
-cask "sublime-text"
 cask "visual-studio-code"
 
 # Design
@@ -63,7 +52,6 @@ cask "sip"
 
 # Media
 cask "loopback"
-cask "sonic-pi"
 cask "spotify"
 cask "transmission"
 cask "vlc"
@@ -71,9 +59,6 @@ cask "vlc"
 # Data Science
 cask "r"
 cask "rstudio"
-
-# Window Management
-cask "spectacle"
 
 # Fonts
 cask "font-lato"
