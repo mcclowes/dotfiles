@@ -1,7 +1,6 @@
 cask_args appdir: "/Applications"
 
 # Command Line Tools
-brew "circleci"
 brew "coreutils"
 brew "diff-so-fancy"
 brew "gh"
