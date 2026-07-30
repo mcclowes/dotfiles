@@ -1,1 +1,6 @@
 .DS_Store
+
+# Local machine state
+.claude/settings.local.json
+.claude/worktrees/
+.saggar/
